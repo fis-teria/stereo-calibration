@@ -9,6 +9,30 @@
 using namespace std;
 using namespace cv;
 
+std::string make_spath(std::string dir, int var, std::string tag)
+{
+  std::string back;
+  if (var < 10)
+  {
+    back = dir + "/00000" + std::to_string(var) + tag;
+  }
+  else if (var < 100)
+  {
+    back = dir + "/0000" + std::to_string(var) + tag;
+  }
+  else if (var < 1000)
+  {
+    back = dir + "/000" + std::to_string(var) + tag;
+  }
+  else if (var < 10000)
+  {
+    back = dir + "/00" + std::to_string(var) + tag;
+  }
+  std::cout << back << std::endl;
+  return back;
+}
+
+
 int main(int argc, char const *argv[])
 {
   char* leftimg_filename;
@@ -35,8 +59,8 @@ int main(int argc, char const *argv[])
   Mat K1, K2, R;
   Vec3d T;
   Mat D1, D2;
-  Mat img1 = imread(leftimg_filename, CV_LOAD_IMAGE_COLOR);
-  Mat img2 = imread(rightimg_filename, CV_LOAD_IMAGE_COLOR);
+  Mat img1 = imread(leftimg_filename, 1);
+  Mat img2 = imread(rightimg_filename, 1);
 
   cv::FileStorage fs1(calib_file, cv::FileStorage::READ);
   fs1["K1"] >> K1;
