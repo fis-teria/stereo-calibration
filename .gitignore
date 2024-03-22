@@ -27,5 +27,14 @@ Compiled Object files
 *.out
 *.app
 
-build/
+!build/calibrate_img/
+!build/calibrate_output/
+build/CMakeFiles
+build/calibrate
+build/calibrate_stereo
+build/cmake_install.cmake
+build/CMakeCache.txt
+build/Makefile
+build/read
+build/undistort_rectify
 calib_imgs/
